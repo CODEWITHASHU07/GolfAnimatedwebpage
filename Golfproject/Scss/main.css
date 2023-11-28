@@ -1,0 +1,633 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "montserrat";
+  color: #fff;
+  --bg:#96c11e;
+}
+
+*::-moz-selection {
+  background: green;
+  color: #000;
+}
+
+*::selection {
+  background: green;
+  color: #000;
+}
+
+body {
+  height: 100%;
+  width: 100%;
+}
+body #cursor {
+  height: 20px;
+  width: 20px;
+  background: rgba(172, 255, 47, 0.769);
+  border-radius: 50%;
+  position: fixed;
+  left: -10vw;
+  z-index: 7;
+}
+body #cursor-blur {
+  height: 400px;
+  width: 400px;
+  background: rgba(186, 247, 19, 0.187);
+  border-radius: 100%;
+  position: fixed;
+  filter: blur(50px);
+  z-index: 7;
+}
+body #nav {
+  height: 10vmax;
+  width: 100%;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 2rem;
+  position: fixed;
+  z-index: 999;
+  cursor: pointer;
+  transition: all 0.8s;
+  padding: 0.2rem 2.5rem;
+}
+body #nav img {
+  width: 6rem;
+}
+body #nav h4 {
+  text-transform: uppercase;
+  font-weight: 500;
+}
+body #nav h4:hover {
+  color: #96c11e;
+}
+body video {
+  height: 100%;
+  width: 100%;
+  -o-object-fit: cover;
+     object-fit: cover;
+  position: fixed;
+  z-index: -1;
+}
+body main {
+  max-width: 100%;
+  background: rgba(0, 0, 0, 0.37);
+  position: relative;
+}
+body main #page1 {
+  position: relative;
+  height: 100vh;
+  width: 100%;
+  text-transform: capitalize;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding-inline: 2rem;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+          user-select: none;
+  z-index: 10;
+}
+body main #page1 span {
+  position: absolute;
+  left: 10px;
+  bottom: 20px;
+  height: 60px;
+  width: 60px;
+  border: 0.2px solid whitesmoke;
+  border-radius: 50%;
+}
+body main #page1 span img {
+  height: 100%;
+  filter: invert(1);
+}
+body main #page1 span:hover {
+  border: 2px solid rgb(132, 203, 25);
+  transform: scale(1.2);
+}
+body main #page1 h1 {
+  font-size: 5.5rem;
+  margin-bottom: 0.01em;
+  font-weight: 900;
+  position: relative;
+  text-transform: uppercase;
+  font-family: "montserrat";
+}
+body main #page1 h1::before {
+  content: "Eat. Drink. Play.";
+  position: absolute;
+  left: -3px;
+  top: -3px;
+  color: black;
+  -webkit-text-stroke: 2px rgba(150, 193, 30, 0.7843137255);
+  z-index: -1;
+}
+body main #page1 h2 {
+  font-size: 1.5rem;
+  margin-bottom: 0.5em;
+  letter-spacing: 1.1px;
+  font-weight: 800;
+}
+body main #page1 p {
+  font-size: 0.9rem;
+  letter-spacing: 1.5px;
+  -moz-text-align-last: center;
+       text-align-last: center;
+  font-weight: 400;
+  line-height: 1.2rem;
+  max-width: 80%;
+}
+body main #page2 {
+  min-height: 100vh;
+  height: auto;
+  max-width: 100%;
+  z-index: 10;
+  position: relative;
+}
+body main #page2 #scroller {
+  overflow-y: hidden;
+  overflow-x: auto;
+  white-space: nowrap;
+  scrollbar-width: none;
+}
+body main #page2 #scroller::-webkit-scrollbar {
+  display: none;
+}
+body main #page2 #scroller #scroller-in {
+  display: inline-block;
+  white-space: nowrap;
+  padding-left: 15px;
+  animation: Scroll 30s linear infinite;
+}
+body main #page2 #scroller #scroller-in h4 {
+  display: inline-block;
+  white-space: nowrap;
+  font-size: 100px;
+  font-weight: 900;
+  font-family: sans-serif;
+  color: transparent;
+  -webkit-text-stroke: 2px white;
+  text-transform: uppercase;
+  margin-right: 30px;
+  transition: all 0.9s;
+}
+body main #page2 #scroller #scroller-in h4:hover {
+  -webkit-text-stroke: 0px white;
+  color: #96c11e;
+}
+body main #page2 #page-About {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 1.5rem;
+  gap: 1.5rem;
+  max-width: 100%;
+  min-height: 50%;
+  margin-block: 2rem;
+  z-index: 9;
+}
+body main #page2 #page-About div {
+  width: 50%;
+}
+body main #page2 #page-About div:not(:nth-of-type(2)) {
+  min-height: 200px;
+  width: 200px;
+}
+body main #page2 #page-About div:nth-child(2) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding-block: 1.5rem;
+  padding-inline: 0.5rem;
+  row-gap: 2rem;
+}
+body main #page2 #page-About div:nth-child(2) h1 {
+  text-align: center;
+  color: rgba(245, 245, 245, 0.907);
+  letter-spacing: 2px;
+  font-size: 3rem;
+}
+body main #page2 #page-About div:nth-child(2) p {
+  width: 100%;
+  text-align: left;
+  font-size: 1rem;
+  text-transform: capitalize;
+  -moz-text-align-last: center;
+       text-align-last: center;
+}
+body main #page2 #page-About div img {
+  height: 100%;
+  width: 100%;
+  border-radius: 0.8rem;
+}
+body main #page2 #card-container {
+  opacity: 1;
+  min-height: 55vh;
+  position: relative;
+  height: 60vh;
+  max-height: -moz-fit-content;
+  max-height: fit-content;
+  max-width: 100%;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 1.9rem;
+  cursor: pointer;
+  z-index: 7;
+}
+body main #page2 #card-container .card {
+  height: 80%;
+  border-radius: 1rem;
+  width: 30%;
+  min-width: 200px;
+  transition: all 0.8s;
+  opacity: 1;
+}
+body main #page2 #card-container .card:first-child {
+  background: url(../source/card1.avif);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+body main #page2 #card-container .card:nth-child(2) {
+  background: url(../source/card2.webp);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+body main #page2 #card-container .card:last-child {
+  background: url(../source/card3.avif);
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+body main #page2 #card-container .card .overlap {
+  height: 100%;
+  width: 100%;
+  position: relative;
+  background: var(--bg);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: inherit;
+  opacity: 0;
+  transition: all 0.8s;
+}
+body main #page2 #card-container .card .overlap .cursor {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-top-right-radius: inherit;
+  height: 80px;
+  width: 50px;
+  background: url(../source/bx-right-arrow-circle.svg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-x: -5px;
+  background-position-y: -20px;
+  padding-right: 15px;
+  padding-top: 15px;
+  transition: all 0.8s;
+}
+body main #page2 #card-container .card .overlap .cursor:hover {
+  filter: invert(1);
+}
+body main #page2 #card-container .card .overlap h2 {
+  font-weight: 700;
+  text-transform: uppercase;
+}
+body main #page2 #card-container .card .overlap p {
+  text-align: center;
+  -moz-text-align-last: center;
+       text-align-last: center;
+  font-size: 15px;
+  margin-top: 1.8rem;
+}
+body main #page2 #card-container .card:hover .overlap {
+  opacity: 1;
+}
+body main #pagethird {
+  min-height: 100vh;
+  max-width: 100%;
+  z-index: 10;
+}
+body main #pagethird div:first-child {
+  min-height: 10vh;
+  background: linear-gradient(to left bottom, #Ace022 20%, rgba(9, 240, 9, 0.667));
+  border-radius: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+body main #pagethird div:first-child img {
+  width: 30%;
+  min-width: 70px;
+}
+body main #pagethird div:first-child p {
+  text-transform: uppercase;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: black;
+  padding-inline: 2em;
+  text-align: left;
+  -moz-text-align-last: center;
+       text-align-last: center;
+}
+body main #pagethird #quetos {
+  min-height: 30vh;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+body main #pagethird #quetos p {
+  text-align: start;
+  margin: 8rem 10rem;
+  font-size: 2rem;
+  padding-left: 1rem;
+  font-weight: 900;
+  text-transform: capitalize;
+  color: black;
+  text-shadow: -3px -1px 4px white;
+  z-index: 10;
+}
+body main #pagethird #quetos #top {
+  height: 60px;
+  position: absolute;
+  left: 5rem;
+  top: 4rem;
+  rotate: 180deg;
+  z-index: 10;
+}
+body main #pagethird #quetos #bottom {
+  position: absolute;
+  right: 8rem;
+  bottom: 4rem;
+  height: 60px;
+  z-index: 10;
+}
+
+@keyframes Scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}
+#pagefourth {
+  min-height: 50vh;
+  border-top: 0.2px solid gray;
+  background: #000;
+  max-width: 100%;
+  padding-top: 10vh;
+  position: relative;
+}
+#pagefourth #container {
+  height: 20vh;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  gap: 1.4rem;
+}
+#pagefourth #container h1 {
+  font-weight: 900;
+  font-size: 3rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: black;
+  text-align: center;
+  font-family: sans-serif;
+  -webkit-text-stroke: 0.5px white;
+  z-index: 10;
+  position: absolute;
+  top: -8vh;
+}
+#pagefourth #container .forcard {
+  min-width: 30%;
+  height: 100%;
+  position: relative;
+  -o-object-fit: cover;
+     object-fit: cover;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  cursor: pointer;
+  transition: all 0.8s;
+  z-index: 10;
+}
+#pagefourth #container .forcard:hover > div {
+  background: transparent;
+  color: white;
+}
+#pagefourth #container .forcard:hover h2 {
+  color: white;
+  transition: all 0.4s;
+}
+#pagefourth #container .forcard div {
+  height: 100%;
+  width: 100%;
+  background: var(--bg);
+  position: absolute;
+  z-index: 10;
+  display: grid;
+  align-items: center;
+}
+#pagefourth #container .forcard div h2 {
+  font-weight: 800;
+  text-align: center;
+  padding: 0 0.5rem;
+  color: black;
+}
+#pagefourth #container .forcard img {
+  height: 100%;
+  width: 100%;
+}
+
+footer {
+  min-height: 30vh;
+  width: 100%;
+  border-top-right-radius: 0.5rem;
+  border-top-left-radius: 0.5rem;
+  max-width: 100%;
+  display: flex;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  padding-top: 1rem;
+  background: linear-gradient(to left bottom, var(--bg), rgb(26, 142, 26));
+}
+footer div {
+  height: 100%;
+  min-width: 22%;
+  color: black;
+  z-index: 20;
+}
+footer div h4 {
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: black;
+  text-transform: capitalize;
+}
+footer #logo {
+  margin-left: 5px;
+}
+footer #logo img {
+  margin-top: 2rem;
+  height: 30px;
+}
+footer #heading3 {
+  line-height: 42px;
+  font-size: 16px;
+}
+
+#last {
+  background: #000;
+  font-size: 10px;
+}
+
+/* Resetting default styles */
+#animation {
+  min-height: 40vh;
+  max-width: 100%;
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: relative;
+  border-top: 2px solid var(--bg);
+}
+#animation #foodplaza {
+  cursor: pointer;
+  height: 80%;
+  width: 45%;
+  max-width: 400px;
+  max-height: 400px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+  justify-content: space-evenly;
+}
+#animation #foodplaza .slider {
+  display: flex;
+  width: 100%;
+  height: 80%;
+  overflow: hidden;
+}
+#animation #foodplaza .slider img {
+  width: 100%;
+  max-height: 100%;
+  border-radius: 1rem;
+  flex-shrink: 0;
+  transition: transform 0.5s ease-in-out;
+}
+#animation .indicators {
+  padding: 0.4rem;
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+#animation .indicator {
+  width: 10px;
+  height: 10px;
+  background-color: rgba(255, 255, 255, 0.3921568627);
+  border-radius: 50%;
+  margin: 0 5px;
+}
+#animation .indicator.active {
+  background-color: var(--bg);
+}
+#animation #contentfood {
+  width: 50%;
+  height: 80%;
+  max-width: 400px;
+  max-height: 400px;
+  display: grid;
+  align-items: center;
+  justify-items: center;
+  z-index: 20;
+  padding: 3rem 1rem 1.2rem 0.2rem;
+}
+#animation #contentfood h4 {
+  font-weight: 800;
+  font-size: 2.5rem;
+  text-align: center;
+}
+#animation #contentfood p {
+  text-transform: capitalize;
+  color: rgba(245, 245, 245, 0.829);
+  margin-top: 1rem;
+  padding-inline: 1rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+#animation #contentfood button {
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  background: #000;
+  border-radius: 1rem;
+  outline: none;
+  border: 1px slid rgba(128, 128, 128, 0.911);
+  font-weight: 600;
+  text-transform: capitalize;
+  margin-top: 1rem;
+  margin-inline: auto;
+  transition: all 0.9s;
+}
+#animation #contentfood button:hover {
+  border-color: #96c11e;
+}
+
+@media screen and (max-width: 950px) {
+  body main #page2 #page-About {
+    display: grid;
+    grid-column: 50% 50%;
+    grid-row: 1fr 1fr;
+    row-gap: 2rem;
+    -moz-column-gap: 1rem;
+         column-gap: 1rem;
+    align-items: center;
+    justify-items: center;
+    -ms-layout-grid-line: 1px solid black;
+  }
+  body main #page2 #page-About div:first-child {
+    height: 100%;
+    width: 100%;
+    grid-area: 1/1/1/1;
+  }
+  body main #page2 #page-About div:last-child {
+    grid-area: 2/1/2/1;
+    height: 100%;
+    width: 100%;
+  }
+  #Aboutcontent {
+    height: 100%;
+    width: 100%;
+    grid-area: 1/2/3/2;
+  }
+  #Aboutcontent h1 {
+    white-space: nowrap;
+  }
+  #Aboutcontent p {
+    text-align: center;
+    line-height: 2.5rem;
+    text-transform: capitalize;
+  }
+  body main #pagethird {
+    min-height: 60vh;
+    max-width: 100%;
+    z-index: 10;
+  }
+}/*# sourceMappingURL=main.css.map */
